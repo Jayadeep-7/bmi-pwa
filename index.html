@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BMI Calculator</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#06b6d4" />
+</head>
+<body>
+  <main class="container">
+    <h1>BMI Calculator</h1>
+
+    <div class="units">
+      <button id="metricBtn" class="unit active">Metric (kg / cm)</button>
+      <button id="imperialBtn" class="unit">Imperial (lb / in)</button>
+    </div>
+
+    <div class="inputs">
+      <label>
+        <span id="weightLabel">Weight (kg)</span>
+        <input id="weight" inputmode="decimal" placeholder="70" />
+      </label>
+
+      <label>
+        <span id="heightLabel">Height (cm)</span>
+        <input id="height" inputmode="decimal" placeholder="170" />
+      </label>
+    </div>
+
+    <div class="actions">
+      <button id="calcBtn" class="primary">Calculate</button>
+      <button id="clearBtn" class="secondary">Clear</button>
+    </div>
+
+    <section id="result" class="result">
+      <div id="resultPlaceholder">Enter values and press Calculate</div>
+    </section>
+
+    <section class="historyHeader">
+      <h2>History</h2>
+      <button id="clearHistory" class="linkBtn">Clear</button>
+    </section>
+
+    <ul id="historyList" class="history"></ul>
+
+    <footer class="footer">
+      <small>Works offline after install. Built in VS Code.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').catch(() => {
+        /* registration failed (likely running from file:// or insecure origin) */
+      });
+    }
+  </script>
+</body>
+</html>
